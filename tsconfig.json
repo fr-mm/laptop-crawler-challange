@@ -1,7 +1,12 @@
 {
   "extends": "@tsconfig/node16/tsconfig.json",
   "compilerOptions": {
-      "baseUrl": "src"
+    "baseUrl": "src",
+    "types": [
+      "puppeteer",
+      "jest-environment-puppeteer",
+      "expect-puppeteer"
+    ]
   },
   "include": ["src", "tests"],
   "exclude": ["node_modules", "static"]
