@@ -1,41 +1,35 @@
-# typescript-boiler
+# laptop-crawler-challange
+Desafio requisitado para uma entrevista de emprego (tornarei o repositório privado quando finalizar o teste)
 
-A simple template for Typescript projects featuring:
+## O desafio
+Acessar esse site e pegar todos notebooks Lenovo ordenando do mais barato para o mais caro. 
+Pegar todos os dados disponíveis dos produtos.
+ 
+É interessante que o robô possa ser consumido por outros serviços. 
+Recomendamos a criação de uma pequena RESTFul API JSON para deixar mais otimizado.
+ 
+- Utilizar Puppeteer ou Playwright.
+ 
+- Criar um repositório no github e nos enviar o link.
+ 
+site:
+https://webscraper.io/test-sites/e-commerce/allinone/computers/laptops
 
-* [Typescript](https://www.typescriptlang.org/) [4.7](https://devblogs.microsoft.com/typescript/announcing-typescript-4-7/)
-* [ts-node](https://www.npmjs.com/package/ts-node) execution engine
-* [tsconfig-paths](https://www.npmjs.com/package/tsconfig-paths) for absolute imports
-* [jest](https://jestjs.io/)
+## O plano
 
-## Usage
-Create your project directory and move into it
-```
-mkdir my-project && cd $_
-```
+O sistema será composto por uma RESTful API 
+e um serviço central (GetLenovoLaptopsSortedByAscendingPriceService)
 
-Clone this repository
-```
-git clone git@github.com:fr-mm/typescript-boiler.git .
-```
+![Modelagem](./static/modelling.png)
 
-Remove git repository
-```
-rm -rf .git
-```
+O fluxo se dará da seguinte forma:  
+![Fluxo](./static/flow.png)
 
-Install dependencies
-```
-npm install
-```
+As bibliotecas utilizadas serão:
+- [Puppeteer](https://github.com/puppeteer/puppeteer), usada pela GetLaptopsByBrandSerevice
+- [Express](https://github.com/expressjs/express), usada pela LaptopAPI
 
-## Commands
-Run your application
-```
-npm start
-```
+## Cronograma
 
-Run all tests
-```
-npm test
-```
+O desafio foi lançado em 4 de Julho de 2022 e deverá ser entrege até 11 de Julho de 2022 às 10:00 da manhã.
 
