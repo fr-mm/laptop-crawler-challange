@@ -4,10 +4,13 @@ import ReviewsDTO from "dtos/reviewsDTO";
 import { ElementHandle, Page } from "puppeteer";
 
 export default class ScrapeLaptopPageDTOFromPage {
-  public async execute(page: Page): Promise<LaptopPageDTO> {
-    const description = await this.getDescription(page);
-    const pricesByHDDDTOs = await this.getPricesByHDD(page);
-    const reviewsDTO = await this.getReviewsDTOs(page);
+  constructor(private readonly page: Page) {}
+
+  public async execute(url: string): Promise<LaptopPageDTO> {
+    await this.page.goto(url);
+    const description = await this.getDescription();
+    const pricesByHDDDTOs = await this.getPricesByHDD();
+    const reviewsDTO = await this.getReviewsDTOs();
 
     return new LaptopPageDTO({
       description: description,
@@ -16,19 +19,18 @@ export default class ScrapeLaptopPageDTOFromPage {
     });
   }
 
-  private async getDescription(page: Page): Promise<string> {
-    return await this.getElementText(".description", page);
+  private async getDescription(): Promise<string> {
+    return await this.getElementText(".description");
   }
 
-  private async getPricesByHDD(page: Page): Promise<PriceByHDDDTO[]> {
-    const buttonHandles = await page.$$(".swatch");
+  private async getPricesByHDD(): Promise<PriceByHDDDTO[]> {
+    const buttonHandles = await this.page.$$(".swatch");
     const pricesByHDDDTOs = [];
     for (const buttonHandle of buttonHandles) {
       const buttonIsAbled = await this.HDDButtonIsAbled(buttonHandle);
       if (buttonIsAbled) {
         const priceByHDDDTO = await this.getPriceByHDDfromButtonHandle(
-          buttonHandle,
-          page
+          buttonHandle
         );
         pricesByHDDDTOs.push(priceByHDDDTO);
       }
@@ -45,34 +47,33 @@ export default class ScrapeLaptopPageDTOFromPage {
   }
 
   private async getPriceByHDDfromButtonHandle(
-    buttonHandle: ElementHandle,
-    page: Page
+    buttonHandle: ElementHandle
   ): Promise<PriceByHDDDTO> {
     const HDD = await this.getTextFromElementHandle(buttonHandle);
     await buttonHandle.click();
-    const price = await this.getElementText(".price", page);
+    const price = await this.getElementText(".price");
     return new PriceByHDDDTO(HDD, price);
   }
 
-  private async getReviewsDTOs(page: Page): Promise<ReviewsDTO> {
-    const amount = await this.getReviewsAmount(page);
-    const stars = await this.getReviewsStars(page);
+  private async getReviewsDTOs(): Promise<ReviewsDTO> {
+    const amount = await this.getReviewsAmount();
+    const stars = await this.getReviewsStars();
     return new ReviewsDTO({ amount: amount, starts: stars });
   }
 
-  private async getReviewsAmount(page: Page): Promise<number> {
-    const ratings = await this.getElementText(".ratings > p", page);
+  private async getReviewsAmount(): Promise<number> {
+    const ratings = await this.getElementText(".ratings > p");
     const amount = ratings.split(" ")[0];
     return parseInt(amount);
   }
 
-  private async getReviewsStars(page: Page): Promise<number> {
-    const elements = await page.$$(".glyphicon-star");
+  private async getReviewsStars(): Promise<number> {
+    const elements = await this.page.$$(".glyphicon-star");
     return elements.length;
   }
 
-  private async getElementText(selector: string, page: Page): Promise<string> {
-    const elementHandle = (await page.$(selector)) as ElementHandle;
+  private async getElementText(selector: string): Promise<string> {
+    const elementHandle = (await this.page.$(selector)) as ElementHandle;
     return await this.getTextFromElementHandle(elementHandle);
   }
 
