@@ -38,11 +38,12 @@ describe("GetLaptopsByBrandSortedByAscendingPriceService", () => {
     });
 
     // This is for checking for wrong properties.
-    // Set property name and make this test fail for a list of unique properties
+    // Set property name and 'run' to 'true' for a list of unique properties
     it("should return results containing only expected properties", async () => {
-      const runTest = async () => {
-        const property = "brand";
+      const run = true;
+      const property = "screen";
 
+      const runTest = async () => {
         const laptops =
           await getLaptopsByBrandSortedByAscendingPriceService.execute(
             LaptopBrandEnum.LENOVO
@@ -52,7 +53,6 @@ describe("GetLaptopsByBrandSortedByAscendingPriceService", () => {
         const uniqueProperties = [...new Set(properties)];
         expect(uniqueProperties).toBe([`unique properties: ${property}`]);
       };
-      const run = false;
       if (run) {
         await runTest();
       } else {
