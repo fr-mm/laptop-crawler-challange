@@ -14,7 +14,7 @@ export default class ParseLaptopDescriptionService {
     return new ParseLaptopDescriptionOutputDTO({
       brand: parseBrandAndModel.brand.trim(),
       model: parseBrandAndModel.model.trim(),
-      screen: `${fields[1].trim()}`,
+      screen: this.parseScreen(fields[1]),
       processor: fields[2].trim(),
       ram: fields[3].trim(),
       memory: fields[4].trim(),
@@ -27,5 +27,10 @@ export default class ParseLaptopDescriptionService {
       brand: splitted[0],
       model: splitted.slice(1).join(" "),
     };
+  }
+
+  private parseScreen(rawScreen: string): string {
+    const escaped = rawScreen.replace('"', '\\"');
+    return escaped.trim();
   }
 }

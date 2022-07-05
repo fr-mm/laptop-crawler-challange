@@ -1,5 +1,3 @@
-- ID
-- escape char "
 - color after model
 - video card after memory
 - internet after memory
