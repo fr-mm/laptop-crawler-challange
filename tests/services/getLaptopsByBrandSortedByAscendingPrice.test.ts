@@ -13,7 +13,7 @@ let getLaptopsByBrandSortedByAscendingPriceService: GetLaptopsByBrandSortedByAsc
 beforeAll(() => {
   getLaptopsByBrandSortedByAscendingPriceService =
     new GetLaptopsByBrandSortedByAscendingPriceService({
-      laptopFactory: new LaptopsFactory(new ParseLaptopDescriptionService()),
+      laptopsFactory: new LaptopsFactory(new ParseLaptopDescriptionService()),
       getLaptopPagesURLsByBrandService: new GetLaptopPagesURLsByBrandService(
         page
       ),

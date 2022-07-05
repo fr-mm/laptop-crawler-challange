@@ -18,7 +18,7 @@ export default class GetLaptopPagesURLsByBrandService {
   }
 
   private async getAllLaptopsHandles(): Promise<ElementHandle[]> {
-    return await page.$$(".title");
+    return await this.page.$$(".title");
   }
 
   private async filterLaptopHandlesByBrand(

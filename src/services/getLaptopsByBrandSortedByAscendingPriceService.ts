@@ -8,7 +8,7 @@ import ScrapeLaptopPageDTOFromURLService from "./scrapeLaptopPageDTOFromURLServi
 import SortLaptopsByAscendingPriceService from "./sortLaptopsByAscendingPriceService";
 
 interface GetLaptopsByBrandSortedByAscendingPriceServiceProps {
-  laptopFactory: LaptopsFactory;
+  laptopsFactory: LaptopsFactory;
   getLaptopPagesURLsByBrandService: GetLaptopPagesURLsByBrandService;
   scrapeLaptopPageDTOFromURLService: ScrapeLaptopPageDTOFromURLService;
   sortLaptopsByAscendingPriceService: SortLaptopsByAscendingPriceService;
@@ -21,7 +21,7 @@ export default class GetLaptopsByBrandSortedByAscendingPriceService {
   private readonly sortLaptopsByAscendingPriceService: SortLaptopsByAscendingPriceService;
 
   constructor({
-    laptopFactory,
+    laptopsFactory: laptopFactory,
     getLaptopPagesURLsByBrandService,
     scrapeLaptopPageDTOFromURLService,
     sortLaptopsByAscendingPriceService,

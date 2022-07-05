@@ -3,7 +3,7 @@ import PriceByHDDDTO from "dtos/priceByHDDDTO";
 import ReviewsDTO from "dtos/reviewsDTO";
 import { ElementHandle, Page } from "puppeteer";
 
-export default class ScrapeLaptopPageDTOFromPage {
+export default class ScrapeLaptopPageDTOFromURLService {
   constructor(private readonly page: Page) {}
 
   public async execute(url: string): Promise<LaptopPageDTO> {
