@@ -10,6 +10,7 @@ let laptopFactory: LaptopFactory;
 
 beforeAll(() => {
   laptopPageDTO = new LaptopPageDTO({
+    id: "548",
     description:
       'Lenovo V110-15IAP, 15.6" HD, Celeron N3350 1.1GHz, 4GB, 128GB SSD, Windows 10 Home',
     pricesByHDD: [

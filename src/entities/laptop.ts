@@ -1,7 +1,7 @@
-import PriceByHDD from "valueObjects/priceByHDD";
 import Reviews from "valueObjects/reviews";
 
 interface LaptopProps {
+  id: string;
   brand: string;
   model: string;
   screen: string;
@@ -16,6 +16,7 @@ interface LaptopProps {
 }
 
 export default class Laptop {
+  readonly id: string;
   readonly brand: string;
   readonly model: string;
   readonly screen: string;
@@ -29,6 +30,7 @@ export default class Laptop {
   readonly reviews: Reviews;
 
   constructor({
+    id,
     brand,
     model,
     screen,
@@ -41,6 +43,7 @@ export default class Laptop {
     price,
     reviews,
   }: LaptopProps) {
+    this.id = id;
     this.brand = brand;
     this.model = model;
     this.screen = screen;

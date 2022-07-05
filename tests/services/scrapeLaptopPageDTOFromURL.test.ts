@@ -14,6 +14,13 @@ beforeAll(async () => {
 
 describe("ScrapeLaptopPageDTOFromPage", () => {
   describe("execute", () => {
+    it("should return dto with expected id", async () => {
+      const laptopPageDTO = await scrapeLaptopPageDTOFromPage.execute(url);
+
+      const expectedId = "548";
+      expect(laptopPageDTO.id).toBe(expectedId);
+    });
+
     it("should return dto with expected description", async () => {
       const laptopPageDTO = await scrapeLaptopPageDTOFromPage.execute(url);
 

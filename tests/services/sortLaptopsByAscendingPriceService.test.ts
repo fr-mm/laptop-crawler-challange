@@ -4,6 +4,7 @@ import Reviews from "valueObjects/reviews";
 
 const buildLaptopMock = (price: number) =>
   new Laptop({
+    id: "",
     brand: "",
     model: "",
     screen: "",

@@ -8,15 +8,24 @@ export default class ScrapeLaptopPageDTOFromURLService {
 
   public async execute(url: string): Promise<LaptopPageDTO> {
     await this.page.goto(url);
+
+    const id = this.getId();
     const description = await this.getDescription();
     const pricesByHDDDTOs = await this.getPricesByHDD();
     const reviewsDTO = await this.getReviewsDTOs();
 
     return new LaptopPageDTO({
+      id: id,
       description: description,
       pricesByHDD: pricesByHDDDTOs,
       reviews: reviewsDTO,
     });
+  }
+
+  private getId(): string {
+    const url = this.page.url();
+    const spliturl = url.split("/");
+    return spliturl[spliturl.length - 1];
   }
 
   private async getDescription(): Promise<string> {

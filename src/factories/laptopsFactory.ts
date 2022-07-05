@@ -25,6 +25,7 @@ export default class LaptopsFactory {
 
     for (const priceByHDD of pricesByHDD) {
       const laptop = new Laptop({
+        id: laptopPageDTO.id,
         brand: descriptionDTO.brand,
         model: descriptionDTO.model,
         screen: descriptionDTO.screen,
