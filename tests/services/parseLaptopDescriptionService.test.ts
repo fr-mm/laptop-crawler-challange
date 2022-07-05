@@ -28,7 +28,7 @@ describe("ParseLaptopDescriptionService", () => {
     it("should return dto with expected screen", () => {
       const dto = parseLaptopDescriptionService.execute(description);
 
-      const expectedScreen = '15.6" HD';
+      const expectedScreen = '15.6\\" HD';
       expect(dto.screen).toBe(expectedScreen);
     });
 

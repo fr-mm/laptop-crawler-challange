@@ -14,18 +14,24 @@ export default class ParseLaptopDescriptionService {
     return new ParseLaptopDescriptionOutputDTO({
       brand: parseBrandAndModel.brand.trim(),
       model: parseBrandAndModel.model.trim(),
-      screen: `${fields[1].trim()}`,
-      processor: fields[2].trim(),
+      screen: this.parseFieldWithEscapedQuotes(fields[1]),
+      processor: this.parseFieldWithEscapedQuotes(fields[2]),
       ram: fields[3].trim(),
       memory: fields[4].trim(),
       os: fields[5].trim(),
     });
   }
+
   private parseBrandAndModel(brandAndModel: string): ParsedBrandAndModel {
     const splitted = brandAndModel.split(" ");
     return {
       brand: splitted[0],
       model: splitted.slice(1).join(" "),
     };
+  }
+
+  private parseFieldWithEscapedQuotes(rawScreen: string): string {
+    const escaped = rawScreen.replace('"', '\\"');
+    return escaped.trim();
   }
 }
