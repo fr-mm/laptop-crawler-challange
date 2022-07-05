@@ -40,7 +40,7 @@ describe("GetLaptopsByBrandSortedByAscendingPriceService", () => {
     // This is for checking for wrong properties.
     // Set property name and 'run' to 'true' for a list of unique properties
     it("should return results containing only expected properties", async () => {
-      const run = true;
+      const run = false;
       const property = "screen";
 
       const runTest = async () => {
