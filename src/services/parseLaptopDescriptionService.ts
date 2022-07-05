@@ -17,7 +17,7 @@ export default class ParseLaptopDescriptionService {
       screen: `${fields[1].trim()}`,
       processor: fields[2].trim(),
       ram: fields[3].trim(),
-      hd: fields[4].trim(),
+      memory: fields[4].trim(),
       os: fields[5].trim(),
     });
   }

@@ -6,12 +6,12 @@ import ParseLaptopDescriptionService from "services/parseLaptopDescriptionServic
 import PriceByHDD from "valueObjects/priceByHDD";
 import Reviews from "valueObjects/reviews";
 
-export default class LaptopFactory {
+export default class LaptopsFactory {
   constructor(
     private readonly parseLaptopDescriptionService: ParseLaptopDescriptionService
   ) {}
 
-  public buildFromLaptopPageDTO(laptopPageDTO: LaptopPageDTO): Laptop {
+  public buildFromLaptopPageDTO(laptopPageDTO: LaptopPageDTO): Laptop[] {
     const descriptionDTO = this.parseLaptopDescriptionService.execute(
       laptopPageDTO.description
     );
@@ -21,19 +21,25 @@ export default class LaptopFactory {
       currency
     );
     const reviews = this.getReviews(laptopPageDTO.reviews);
+    const laptops = [];
 
-    return new Laptop({
-      brand: descriptionDTO.brand,
-      model: descriptionDTO.model,
-      screen: descriptionDTO.screen,
-      processor: descriptionDTO.processor,
-      ram: descriptionDTO.ram,
-      hd: descriptionDTO.hd,
-      os: descriptionDTO.os,
-      currency: currency,
-      pricesByHDD: pricesByHDD,
-      reviews: reviews,
-    });
+    for (const priceByHDD of pricesByHDD) {
+      const laptop = new Laptop({
+        brand: descriptionDTO.brand,
+        model: descriptionDTO.model,
+        screen: descriptionDTO.screen,
+        processor: descriptionDTO.processor,
+        ram: descriptionDTO.ram,
+        memory: descriptionDTO.memory,
+        os: descriptionDTO.os,
+        hdd: priceByHDD.hdd,
+        currency: currency,
+        price: priceByHDD.price,
+        reviews: reviews,
+      });
+      laptops.push(laptop);
+    }
+    return laptops;
   }
 
   private getCurrency(pricesByHDDDTO: PriceByHDDDTO[]): string {

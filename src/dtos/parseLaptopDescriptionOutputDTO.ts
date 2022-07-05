@@ -4,7 +4,7 @@ interface ParseLaptopDescriptionOutputDTOProps {
   screen: string;
   processor: string;
   ram: string;
-  hd: string;
+  memory: string;
   os: string;
 }
 
@@ -14,7 +14,7 @@ export default class ParseLaptopDescriptionOutputDTO {
   readonly screen: string;
   readonly processor: string;
   readonly ram: string;
-  readonly hd: string;
+  readonly memory: string;
   readonly os: string;
 
   constructor({
@@ -23,7 +23,7 @@ export default class ParseLaptopDescriptionOutputDTO {
     screen,
     processor,
     ram,
-    hd,
+    memory: memory,
     os,
   }: ParseLaptopDescriptionOutputDTOProps) {
     this.brand = brand;
@@ -31,7 +31,7 @@ export default class ParseLaptopDescriptionOutputDTO {
     this.screen = screen;
     this.processor = processor;
     this.ram = ram;
-    this.hd = hd;
+    this.memory = memory;
     this.os = os;
   }
 }

@@ -7,10 +7,11 @@ interface LaptopProps {
   screen: string;
   processor: string;
   ram: string;
-  hd: string;
+  memory: string;
   os: string;
+  hdd: string;
   currency: string;
-  pricesByHDD: PriceByHDD[];
+  price: number;
   reviews: Reviews;
 }
 
@@ -20,10 +21,11 @@ export default class Laptop {
   readonly screen: string;
   readonly processor: string;
   readonly ram: string;
-  readonly hd: string;
+  readonly memory: string;
   readonly os: string;
+  readonly hdd: string;
   readonly currency: string;
-  readonly pricesByHDD: PriceByHDD[];
+  readonly price: number;
   readonly reviews: Reviews;
 
   constructor({
@@ -32,10 +34,11 @@ export default class Laptop {
     screen,
     processor,
     ram,
-    hd,
+    memory: memory,
     os,
+    hdd: hdd,
     currency,
-    pricesByHDD,
+    price,
     reviews,
   }: LaptopProps) {
     this.brand = brand;
@@ -43,10 +46,11 @@ export default class Laptop {
     this.screen = screen;
     this.processor = processor;
     this.ram = ram;
-    this.hd = hd;
+    this.memory = memory;
     this.os = os;
+    this.hdd = hdd;
     this.currency = currency;
-    this.pricesByHDD = pricesByHDD;
+    this.price = price;
     this.reviews = reviews;
   }
 }
