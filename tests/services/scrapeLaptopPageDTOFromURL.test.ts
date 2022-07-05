@@ -1,15 +1,15 @@
 import PriceByHDDDTO from "dtos/priceByHDDDTO";
 import ReviewsDTO from "dtos/reviewsDTO";
-import ScrapeLaptopPageDTOFromURL from "services/scrapeLaptopPageDTOFromURL";
+import ScrapeLaptopPageDTOFromURLService from "services/scrapeLaptopPageDTOFromURLService";
 
 let url: string;
-let scrapeLaptopPageDTOFromPage: ScrapeLaptopPageDTOFromURL;
+let scrapeLaptopPageDTOFromPage: ScrapeLaptopPageDTOFromURLService;
 
 jest.setTimeout(10000);
 
 beforeAll(async () => {
   url = "https://webscraper.io/test-sites/e-commerce/allinone/product/548";
-  scrapeLaptopPageDTOFromPage = new ScrapeLaptopPageDTOFromURL(page);
+  scrapeLaptopPageDTOFromPage = new ScrapeLaptopPageDTOFromURLService(page);
 });
 
 describe("ScrapeLaptopPageDTOFromPage", () => {
