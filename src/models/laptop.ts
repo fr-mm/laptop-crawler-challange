@@ -7,7 +7,9 @@ interface LaptopProps {
   screen: string;
   processor: string;
   ram: string;
+  hd: string;
   os: string;
+  currency: string;
   pricesByHDD: PriceByHDD[];
   reviews: Reviews;
 }
@@ -18,7 +20,9 @@ export default class Laptop {
   readonly screen: string;
   readonly processor: string;
   readonly ram: string;
+  readonly hd: string;
   readonly os: string;
+  readonly currency: string;
   readonly pricesByHDD: PriceByHDD[];
   readonly reviews: Reviews;
 
@@ -28,7 +32,9 @@ export default class Laptop {
     screen,
     processor,
     ram,
+    hd,
     os,
+    currency,
     pricesByHDD,
     reviews,
   }: LaptopProps) {
@@ -37,7 +43,9 @@ export default class Laptop {
     this.screen = screen;
     this.processor = processor;
     this.ram = ram;
+    this.hd = hd;
     this.os = os;
+    this.currency = currency;
     this.pricesByHDD = pricesByHDD;
     this.reviews = reviews;
   }
