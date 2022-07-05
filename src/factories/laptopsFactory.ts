@@ -32,6 +32,8 @@ export default class LaptopsFactory {
         processor: descriptionDTO.processor,
         ram: descriptionDTO.ram,
         memory: descriptionDTO.memory,
+        videoCard: descriptionDTO.videoCard,
+        network: descriptionDTO.network,
         os: descriptionDTO.os,
         hdd: priceByHDD.hdd,
         currency: currency,

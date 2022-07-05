@@ -8,6 +8,8 @@ interface LaptopProps {
   processor: string;
   ram: string;
   memory: string;
+  videoCard: string;
+  network: string;
   os: string;
   hdd: string;
   currency: string;
@@ -23,6 +25,8 @@ export default class Laptop {
   readonly processor: string;
   readonly ram: string;
   readonly memory: string;
+  readonly videoCard: string;
+  readonly network: string;
   readonly os: string;
   readonly hdd: string;
   readonly currency: string;
@@ -36,9 +40,11 @@ export default class Laptop {
     screen,
     processor,
     ram,
-    memory: memory,
+    memory,
+    videoCard,
+    network,
     os,
-    hdd: hdd,
+    hdd,
     currency,
     price,
     reviews,
@@ -50,6 +56,8 @@ export default class Laptop {
     this.processor = processor;
     this.ram = ram;
     this.memory = memory;
+    this.videoCard = videoCard;
+    this.network = network;
     this.os = os;
     this.hdd = hdd;
     this.currency = currency;
