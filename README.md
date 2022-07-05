@@ -1,6 +1,33 @@
 # laptop-crawler-challange
 Desafio requisitado para uma entrevista de emprego (tornarei o repositório privado quando finalizar o teste)
 
+## Uso
+Clone o repositório
+```
+git clone git@github.com:fr-mm/laptop-crawler-challange.git
+```
+
+Instale as dependências
+```
+npm i
+```
+
+Rode os testes para garantir que tudo está ok
+```
+npm test
+```
+
+Inicie o servidor
+```
+npm start
+```
+
+Acesse ou mande uma GET request para
+```
+http://localhost:4000/lenovo
+```
+
+
 ## O desafio
 Acessar esse site e pegar todos notebooks Lenovo ordenando do mais barato para o mais caro. 
 Pegar todos os dados disponíveis dos produtos.
@@ -29,7 +56,13 @@ As bibliotecas utilizadas serão:
 - [Puppeteer](https://github.com/puppeteer/puppeteer), usada pela GetLaptopsByBrandSerevice
 - [Express](https://github.com/expressjs/express), usada pela LaptopAPI
 
+
+## A solução
+
+Ocorreram algumas alterações ao longo do processo. O fluxo final ficou assim:  
+![Fluxo final](./static/final-flow.png)
+
 ## Cronograma
 
-O desafio foi lançado em 4 de Julho de 2022 e deverá ser entrege até 11 de Julho de 2022 às 10:00 da manhã.
+O desafio foi lançado em 4 de Julho de 2022 e entregue em 5 de Julho de 2022
 
