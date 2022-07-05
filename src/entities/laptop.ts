@@ -2,6 +2,7 @@ import Reviews from "valueObjects/reviews";
 
 interface LaptopProps {
   id: string;
+  name: string;
   brand: string;
   model: string;
   screen: string;
@@ -20,6 +21,7 @@ interface LaptopProps {
 
 export default class Laptop {
   readonly id: string;
+  readonly name: string;
   readonly brand: string;
   readonly model: string;
   readonly screen: string;
@@ -37,6 +39,7 @@ export default class Laptop {
 
   constructor({
     id,
+    name,
     brand,
     model,
     screen,
@@ -53,6 +56,7 @@ export default class Laptop {
     reviews,
   }: LaptopProps) {
     this.id = id;
+    this.name = name;
     this.brand = brand;
     this.model = model;
     this.screen = screen;

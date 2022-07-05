@@ -8,15 +8,16 @@ export default class ScrapeLaptopPageDTOFromURLService {
 
   public async execute(url: string): Promise<LaptopPageDTO> {
     await this.page.goto(url);
-    //await this.page.waitForNavigation();
 
     const id = this.getId();
+    const name = await this.getName();
     const description = await this.getDescription();
     const pricesByHDDDTOs = await this.getPricesByHDD();
     const reviewsDTO = await this.getReviewsDTOs();
 
     return new LaptopPageDTO({
       id: id,
+      name: name,
       description: description,
       pricesByHDD: pricesByHDDDTOs,
       reviews: reviewsDTO,
@@ -27,6 +28,13 @@ export default class ScrapeLaptopPageDTOFromURLService {
     const url = this.page.url();
     const spliturl = url.split("/");
     return spliturl[spliturl.length - 1];
+  }
+
+  private async getName(): Promise<string> {
+    const captionHandle = (await this.page.$(
+      ".caption h4:nth-child(2)"
+    )) as ElementHandle;
+    return await this.getTextFromElementHandle(captionHandle);
   }
 
   private async getDescription(): Promise<string> {

@@ -21,6 +21,13 @@ describe("ScrapeLaptopPageDTOFromPage", () => {
       expect(laptopPageDTO.id).toBe(expectedId);
     });
 
+    it("should return dto with expected name", async () => {
+      const laptopPageDTO = await scrapeLaptopPageDTOFromPage.execute(url);
+
+      const expectedName = "Lenovo V110-15IAP";
+      expect(laptopPageDTO.name).toBe(expectedName);
+    });
+
     it("should return dto with expected description", async () => {
       const laptopPageDTO = await scrapeLaptopPageDTOFromPage.execute(url);
 

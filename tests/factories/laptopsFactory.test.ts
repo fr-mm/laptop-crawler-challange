@@ -11,6 +11,7 @@ let laptopFactory: LaptopFactory;
 beforeAll(() => {
   defaultLaptopPageDTO = new LaptopPageDTO({
     id: "548",
+    name: "Lenovo V110-15IAP",
     description:
       'Lenovo V110-15IAP, 15.6" HD, Celeron N3350 1.1GHz, 4GB, 128GB SSD, Windows 10 Home',
     pricesByHDD: [
@@ -123,6 +124,7 @@ describe("LaptopFactory", () => {
     describe("when videoCard is present", () => {
       const laptopPageDTO = new LaptopPageDTO({
         id: "548",
+        name: "Lenovo Legion Y720",
         description:
           'Lenovo Legion Y720, 15.6" FHD IPS, Core i7-7700HQ, 8GB, 128GB SSD + 2TB HDD, GeForce GTX 1060 6GB, DOS, RGB backlit keyboard',
         pricesByHDD: [
@@ -154,6 +156,7 @@ describe("LaptopFactory", () => {
     describe("when network is present", () => {
       const laptopPageDTO = new LaptopPageDTO({
         id: "548",
+        name: "Lenovo ThinkPad Yoga 370 Black",
         description:
           'Lenovo ThinkPad Yoga 370 Black, 13.3" FHD IPS Touch, Core i5-7200U, 8GB, 256GB SSD, 4G, Windows 10 Pro',
         pricesByHDD: [
@@ -184,6 +187,7 @@ describe("LaptopFactory", () => {
     describe("when keyboard is present", () => {
       const laptopPageDTO = new LaptopPageDTO({
         id: "548",
+        name: "Lenovo Legion Y720",
         description:
           'Lenovo Legion Y720, 15.6" FHD IPS, Core i7-7700HQ, 8GB, 128GB SSD + 2TB HDD, GeForce GTX 1060 6GB, DOS, RGB backlit keyboard',
         pricesByHDD: [

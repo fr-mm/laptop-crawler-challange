@@ -61,6 +61,7 @@ describe("APIv1", () => {
     it("should return response with expected where first result has same keys as a Laptop", async () => {
       const dummyLaptop = new Laptop({
         id: "",
+        name: "",
         brand: "",
         model: "",
         screen: "",
