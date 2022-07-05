@@ -49,7 +49,7 @@ describe("LaptopFactory", () => {
     it("should return laptop with expected screen", async () => {
       const laptop = laptopFactory.buildFromLaptopPageDTO(laptopPageDTO)[0];
 
-      const expectedScreen = '15.6" HD';
+      const expectedScreen = '15.6\\" HD';
       expect(laptop.screen).toBe(expectedScreen);
     });
 
