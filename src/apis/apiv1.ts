@@ -2,18 +2,21 @@ import Express from "express";
 import cors from "cors";
 import GetLaptopsByBrandSortedByAscendingPriceService from "services/getLaptopsByBrandSortedByAscendingPriceService";
 import LaptopBrandEnum from "enums/laptopBrandEnum";
+import { Server } from "http";
 
 export default class APIv1 {
-  private readonly api: Express.Application;
+  readonly app: Express.Application;
   private readonly hostname: string;
   private readonly port: string;
+  private server: Server | undefined;
 
   constructor(
     private readonly getLaptopsByBrandSortedByAscendingPriceService: GetLaptopsByBrandSortedByAscendingPriceService
   ) {
-    this.api = Express();
+    this.app = Express();
     this.hostname = process.env.HOSTNAME || "http://localhost";
     this.port = process.env.PORT || "4000";
+    this.server = undefined;
   }
 
   public start(): void {
@@ -22,8 +25,14 @@ export default class APIv1 {
     this.startServer();
   }
 
+  public stop(): void {
+    if (this.server instanceof Server) {
+      this.server.close();
+    }
+  }
+
   private setCors(): void {
-    this.api.use(
+    this.app.use(
       cors({
         origin: ["http://localhost:3000"],
       })
@@ -31,25 +40,25 @@ export default class APIv1 {
   }
 
   private setRoutes(): void {
-    this.api.get("/", (req: Express.Request, res: Express.Response) => {
+    this.app.get("/", (req: Express.Request, res: Express.Response) => {
       res.send("Rotas disponíveis: /lenovo");
     });
 
-    this.api.get(
+    this.app.get(
       "/lenovo",
       async (req: Express.Request, res: Express.Response) => {
         const laptops =
           await this.getLaptopsByBrandSortedByAscendingPriceService.execute(
             LaptopBrandEnum.LENOVO
           );
-        res.status(200).json(laptops);
-        res.send();
+        res.statusCode = 200;
+        res.json(laptops);
       }
     );
   }
 
   private startServer(): void {
-    this.api.listen(this.port, () => {
+    this.server = this.app.listen(this.port, () => {
       console.log(`Servidor rodando em ${this.hostname}:${this.port}`);
     });
   }

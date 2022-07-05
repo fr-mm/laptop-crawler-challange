@@ -8,6 +8,7 @@ export default class ScrapeLaptopPageDTOFromURLService {
 
   public async execute(url: string): Promise<LaptopPageDTO> {
     await this.page.goto(url);
+    //await this.page.waitForNavigation();
 
     const id = this.getId();
     const description = await this.getDescription();
