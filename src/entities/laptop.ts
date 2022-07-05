@@ -11,6 +11,7 @@ interface LaptopProps {
   videoCard: string | null;
   network: string | null;
   os: string;
+  keyboard: string | null;
   hdd: string;
   currency: string;
   price: number;
@@ -28,6 +29,7 @@ export default class Laptop {
   readonly videoCard: string | null;
   readonly network: string | null;
   readonly os: string;
+  readonly keyboard: string | null;
   readonly hdd: string;
   readonly currency: string;
   readonly price: number;
@@ -44,6 +46,7 @@ export default class Laptop {
     videoCard,
     network,
     os,
+    keyboard,
     hdd,
     currency,
     price,
@@ -59,6 +62,7 @@ export default class Laptop {
     this.videoCard = videoCard;
     this.network = network;
     this.os = os;
+    this.keyboard = keyboard;
     this.hdd = hdd;
     this.currency = currency;
     this.price = price;

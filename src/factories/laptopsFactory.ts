@@ -35,6 +35,7 @@ export default class LaptopsFactory {
         videoCard: this.getStringOrNull(descriptionDTO.videoCard),
         network: this.getStringOrNull(descriptionDTO.network),
         os: descriptionDTO.os,
+        keyboard: this.getStringOrNull(descriptionDTO.keyboard),
         hdd: priceByHDD.hdd,
         currency: currency,
         price: priceByHDD.price,

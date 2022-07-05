@@ -2,10 +2,12 @@ import ParseLaptopDescriptionService from "services/parseLaptopDescriptionServic
 
 let defaultDescription: string;
 let parseLaptopDescriptionService: ParseLaptopDescriptionService;
+let defaultUnavailableField: string;
 
 beforeAll(() => {
   defaultDescription =
     'Lenovo V110-15IAP, 15.6" HD, Celeron N3350 1.1GHz, 4GB, 128GB SSD, Windows 10 Home';
+  defaultUnavailableField = "null";
   parseLaptopDescriptionService = new ParseLaptopDescriptionService();
 });
 
@@ -78,7 +80,7 @@ describe("ParseLaptopDescriptionService", () => {
       it("should return dto with expected videoCard", () => {
         const dto = parseLaptopDescriptionService.execute(defaultDescription);
 
-        const expectedVideoCard = "null";
+        const expectedVideoCard = defaultUnavailableField;
         expect(dto.videoCard).toBe(expectedVideoCard);
       });
     });
@@ -105,7 +107,7 @@ describe("ParseLaptopDescriptionService", () => {
       it("should return dto with expected network", () => {
         const dto = parseLaptopDescriptionService.execute(defaultDescription);
 
-        const expectedNetwork = "null";
+        const expectedNetwork = defaultUnavailableField;
         expect(dto.network).toBe(expectedNetwork);
       });
     });
@@ -125,6 +127,26 @@ describe("ParseLaptopDescriptionService", () => {
 
         const expectedOS = "Windows 10 Pro";
         expect(dto.os).toBe(expectedOS);
+      });
+    });
+
+    describe("when keyboard is not present", () => {
+      it("should return dto with expected keyboard", () => {
+        const dto = parseLaptopDescriptionService.execute(defaultDescription);
+
+        const expectedKeyboard = defaultUnavailableField;
+        expect(dto.keyboard).toBe(expectedKeyboard);
+      });
+    });
+
+    describe("when keyboard is present", () => {
+      const description =
+        'Lenovo Legion Y720, 15.6" FHD IPS, Core i7-7700HQ, 8GB, 128GB SSD + 2TB HDD, GeForce GTX 1060 6GB, DOS, RGB backlit keyboard';
+      it("should return dto with expected network", () => {
+        const dto = parseLaptopDescriptionService.execute(description);
+
+        const expectedKeyboard = "RGB backlit keyboard";
+        expect(dto.keyboard).toBe(expectedKeyboard);
       });
     });
   });

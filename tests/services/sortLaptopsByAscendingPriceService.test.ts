@@ -14,6 +14,7 @@ const buildLaptopMock = (price: number) =>
     videoCard: "",
     network: "",
     os: "",
+    keyboard: "",
     hdd: "",
     currency: "",
     price: price,

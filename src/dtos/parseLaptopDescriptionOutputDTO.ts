@@ -8,6 +8,7 @@ interface ParseLaptopDescriptionOutputDTOProps {
   videoCard: string;
   network: string;
   os: string;
+  keyboard: string;
 }
 
 export default class ParseLaptopDescriptionOutputDTO {
@@ -20,6 +21,7 @@ export default class ParseLaptopDescriptionOutputDTO {
   readonly videoCard: string;
   readonly network: string;
   readonly os: string;
+  readonly keyboard: string;
 
   constructor({
     brand,
@@ -31,6 +33,7 @@ export default class ParseLaptopDescriptionOutputDTO {
     videoCard,
     network,
     os,
+    keyboard,
   }: ParseLaptopDescriptionOutputDTOProps) {
     this.brand = brand;
     this.model = model;
@@ -41,5 +44,6 @@ export default class ParseLaptopDescriptionOutputDTO {
     this.videoCard = videoCard;
     this.network = network;
     this.os = os;
+    this.keyboard = keyboard;
   }
 }

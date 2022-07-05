@@ -1,5 +1,4 @@
 import ParseLaptopDescriptionOutputDTO from "dtos/parseLaptopDescriptionOutputDTO";
-import LaptopColorEnum from "enums/laptopColorEnum";
 
 interface ParsedBrandAndModel {
   brand: string;
@@ -10,6 +9,7 @@ export default class ParseLaptopDescriptionService {
   private readonly videoCardFlags = ["GTX"];
   private readonly networkFlags = ["4G"];
   private readonly colorFlags = ["Black"];
+  private readonly defaultUnavailableField = "null";
 
   public execute(description: string): ParseLaptopDescriptionOutputDTO {
     const fields = description.split(",");
@@ -27,6 +27,7 @@ export default class ParseLaptopDescriptionService {
       videoCard: formattedFields[5].trim(),
       network: formattedFields[6].trim(),
       os: formattedFields[7].trim(),
+      keyboard: formattedFields[8].trim(),
     });
   }
 
@@ -34,7 +35,8 @@ export default class ParseLaptopDescriptionService {
     const withMergedColor = this.mergeColorInModel(fields);
     const withVideoCard = this.setVideoCard(withMergedColor);
     const withNetwork = this.setNetwork(withVideoCard);
-    return withNetwork;
+    const withKeyboard = this.setKeyboard(withNetwork);
+    return withKeyboard;
   }
 
   private mergeColorInModel(fields: string[]): string[] {
@@ -48,9 +50,8 @@ export default class ParseLaptopDescriptionService {
 
   private setVideoCard(fields: string[]): string[] {
     const videoCardIndex = 5;
-    const defaultVideoCard = "null";
     if (!this.hasVideoCard(fields)) {
-      fields.splice(videoCardIndex, 0, defaultVideoCard);
+      fields.splice(videoCardIndex, 0, this.defaultUnavailableField);
     }
     return fields;
   }
@@ -61,15 +62,23 @@ export default class ParseLaptopDescriptionService {
 
   private setNetwork(fields: string[]): string[] {
     const networkIndex = 6;
-    const defaultNetwork = "null";
     if (!this.hasNetwork(fields)) {
-      fields.splice(networkIndex, 0, defaultNetwork);
+      fields.splice(networkIndex, 0, this.defaultUnavailableField);
     }
     return fields;
   }
 
   private hasNetwork(fields: string[]): boolean {
     return this.hasOneOfFlagsOnIndex(this.networkFlags, 6, fields);
+  }
+
+  private setKeyboard(fields: string[]): string[] {
+    const keyboardIndex = 8;
+    const hasKeyboard = fields[keyboardIndex] !== undefined;
+    if (!hasKeyboard) {
+      fields.push(this.defaultUnavailableField);
+    }
+    return fields;
   }
 
   private hasOneOfFlagsOnIndex(

@@ -180,5 +180,35 @@ describe("LaptopFactory", () => {
         expect(laptop.network).toBe(expectedNetwork);
       });
     });
+
+    describe("when keyboard is present", () => {
+      const laptopPageDTO = new LaptopPageDTO({
+        id: "548",
+        description:
+          'Lenovo Legion Y720, 15.6" FHD IPS, Core i7-7700HQ, 8GB, 128GB SSD + 2TB HDD, GeForce GTX 1060 6GB, DOS, RGB backlit keyboard',
+        pricesByHDD: [
+          new PriceByHDDDTO("128", "$321.94"),
+          new PriceByHDDDTO("256", "$341.94"),
+        ],
+        reviews: new ReviewsDTO({ amount: 3, starts: 4 }),
+      });
+      const parseLaptopDescriptionService = new ParseLaptopDescriptionService();
+      laptopFactory = new LaptopFactory(parseLaptopDescriptionService);
+      it("should return laptop with expected keyboard", () => {
+        const laptop = laptopFactory.buildFromLaptopPageDTO(laptopPageDTO)[0];
+
+        const expectedKeyboard = "RGB backlit keyboard";
+        expect(laptop.keyboard).toBe(expectedKeyboard);
+      });
+    });
+    describe("when keyboard is null", () => {
+      it("should return laptop with expected keyboard", () => {
+        const laptop =
+          laptopFactory.buildFromLaptopPageDTO(defaultLaptopPageDTO)[0];
+
+        const expectedKeyboard = null;
+        expect(laptop.keyboard).toBe(expectedKeyboard);
+      });
+    });
   });
 });
