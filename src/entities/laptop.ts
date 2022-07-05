@@ -8,8 +8,8 @@ interface LaptopProps {
   processor: string;
   ram: string;
   memory: string;
-  videoCard: string;
-  network: string;
+  videoCard: string | null;
+  network: string | null;
   os: string;
   hdd: string;
   currency: string;
@@ -25,8 +25,8 @@ export default class Laptop {
   readonly processor: string;
   readonly ram: string;
   readonly memory: string;
-  readonly videoCard: string;
-  readonly network: string;
+  readonly videoCard: string | null;
+  readonly network: string | null;
   readonly os: string;
   readonly hdd: string;
   readonly currency: string;

@@ -32,8 +32,8 @@ export default class LaptopsFactory {
         processor: descriptionDTO.processor,
         ram: descriptionDTO.ram,
         memory: descriptionDTO.memory,
-        videoCard: descriptionDTO.videoCard,
-        network: descriptionDTO.network,
+        videoCard: this.getStringOrNull(descriptionDTO.videoCard),
+        network: this.getStringOrNull(descriptionDTO.network),
         os: descriptionDTO.os,
         hdd: priceByHDD.hdd,
         currency: currency,
@@ -88,5 +88,9 @@ export default class LaptopsFactory {
       amount: reviewsDTO.amount,
       stars: reviewsDTO.starts,
     });
+  }
+
+  private getStringOrNull(field: string): string | null {
+    return field === "null" ? null : field;
   }
 }
