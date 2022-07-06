@@ -2,7 +2,7 @@
 Desafio requisitado para uma entrevista de emprego (tornarei o repositório privado quando finalizar o teste)
 
 ## Uso
-[Node](https://nodejs.org/en/) >=6.0.0
+[Node](https://nodejs.org/en/) 17.8.0
 
 Clone o repositório
 ```
