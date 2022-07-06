@@ -2,6 +2,8 @@
 Desafio requisitado para uma entrevista de emprego (tornarei o repositório privado quando finalizar o teste)
 
 ## Uso
+([Node](https://nodejs.org/en/) >=6.0.0
+
 Clone o repositório
 ```
 git clone git@github.com:fr-mm/laptop-crawler-challange.git
@@ -64,5 +66,5 @@ Ocorreram algumas alterações ao longo do processo. O fluxo final ficou assim:
 
 ## Cronograma
 
-O desafio foi lançado em 4 de Julho de 2022 e entregue em 5 de Julho de 2022
+O desafio foi lançado em 4 de Julho de 2022 e entregue em 6 de Julho de 2022
 
